@@ -37,7 +37,8 @@
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonYellow" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonYellow"
+        android:onClick="onGreenButtonClick"/>
 
     <TextView
         android:id="@+id/textView"
