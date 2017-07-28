@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ConstraintLayout mConstraintLayout;
     private TextView mInfoTextView;
@@ -22,16 +22,42 @@ public class MainActivity extends AppCompatActivity {
         mInfoTextView = (TextView) findViewById(R.id.textView);
 
         Button yellowButton = (Button) findViewById(R.id.buttonYellow);
-        yellowButton.setOnClickListener(new View.OnClickListener() {
+        Button greenButton = (Button) findViewById(R.id.buttonGreen);
+        Button redButton = (Button) findViewById(R.id.buttonRed);
+
+        yellowButton.setOnClickListener(this);
+        greenButton.setOnClickListener(this);
+        redButton.setOnClickListener(this);
+
+        /*yellowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mInfoTextView.setText(R.string.yellow);
                 mConstraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.yellowColor));
             }
-        });
+        });*/
+
     }
 
-    public void onRedButtonClick(View view) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonGreen:
+                mInfoTextView.setText(R.string.green);
+                mConstraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.greenColor));
+                break;
+            case R.id.buttonYellow:
+                mInfoTextView.setText(R.string.yellow + " " + this.getClass());
+                mConstraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.yellowColor));
+                break;
+            case R.id.buttonRed:
+                mInfoTextView.setText(R.string.red);
+                mConstraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.redColor));
+                break;
+        }
+    }
+
+    /*public void onRedButtonClick(View view) {
         mInfoTextView.setText(R.string.red);
         mConstraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,R.color.redColor));
     }
@@ -39,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     public void onGreenButtonClick(View view) {
         mInfoTextView.setText(R.string.green);
         mConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.greenColor));
-    }
+    }*/
 
 
 }
